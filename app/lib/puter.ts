@@ -335,22 +335,22 @@ export const usePuterStore = create<PuterStore>((set, get) => {
         }
 
         return puter.ai.chat(
-            [
+          [
+            {
+              role: 'user',
+              content: [
                 {
-                    role: "user",
-                    content: [
-                        {
-                            type: "file",
-                            puter_path: path,
-                        },
-                        {
-                            type: "text",
-                            text: message,
-                        },
-                    ],
+                  type: 'file',
+                  puter_path: path,
                 },
-            ],
-            { model: "claude-sonnet-4" }
+                {
+                  type: 'text',
+                  text: message,
+                },
+              ],
+            },
+          ],
+          { model: 'gpt-4o-mini' },
         ) as Promise<AIResponse | undefined>;
     };
 

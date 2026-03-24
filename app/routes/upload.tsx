@@ -64,6 +64,7 @@ const Upload:  () => React.JSX.Element = () => {
         await kv.set(`resume:${uuid}`, JSON.stringify(data))
         setStatusText('Analyze Complete, redirecting...')
         console.log(data)
+        navigate(`/resume/${uuid}`);
 
         }
 
